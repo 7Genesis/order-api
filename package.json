@@ -1,0 +1,26 @@
+{
+  "name": "order-api",
+  "version": "1.0.0",
+  "description": "API de pedidos para teste técnico Jitterbit",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "mongodb",
+    "mongoose",
+    "api"
+  ],
+  "author": "Genesis",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2",
+    "mongoose": "^8.18.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
