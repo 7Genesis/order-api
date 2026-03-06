@@ -49,3 +49,21 @@ DELETE /order/:id
     }
   ]
 }
+
+## Como executar o projeto
+
+1. Clonar o repositório
+
+git clone https://github.com/7Genesis/order-api.git
+
+2. Entrar na pasta
+
+cd order-api
+
+3. Instalar dependências
+
+npm install
+
+4. Executar a API
+
+npm run dev
