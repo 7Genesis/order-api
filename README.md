@@ -1,6 +1,6 @@
 # Order API
 
-API desenvolvida em Node.js com JavaScript para gerenciamento de pedidos, conforme desafio técnico.
+API desenvolvida em Node.js para gerenciamento de pedidos.
 
 ## Tecnologias utilizadas
 
@@ -12,14 +12,29 @@ API desenvolvida em Node.js com JavaScript para gerenciamento de pedidos, confor
 ## Funcionalidades
 
 - Criar pedido
-- Buscar pedido por número
+- Buscar pedido por ID
 - Listar pedidos
 - Atualizar pedido
-- Remover pedido
+- Deletar pedido
 
-## Estrutura dos dados
+## Endpoints
 
-### JSON recebido
+### Criar pedido
+POST /order
+
+### Buscar pedido
+GET /order/:id
+
+### Listar pedidos
+GET /order/list
+
+### Atualizar pedido
+PUT /order/:id
+
+### Deletar pedido
+DELETE /order/:id
+
+## Exemplo de requisição
 
 ```json
 {
