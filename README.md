@@ -1,93 +1,50 @@
-Order API
+# Order API
 
-API REST desenvolvida em Node.js para gerenciamento de pedidos.
-O projeto permite criar, consultar, atualizar e remover pedidos, além de possuir autenticação via JWT e documentação da API com Swagger.
+API REST em Node.js para gerenciamento de pedidos, desenvolvida como teste técnico.
+Permite criar, consultar, listar, atualizar e remover pedidos, com persistência em MongoDB.
 
-⸻
+## Tecnologias
 
-Tecnologias utilizadas
-	•	Node.js
-	•	Express
-	•	MongoDB
-	•	Mongoose
-	•	JSON Web Token (JWT)
-	•	Swagger (Documentação da API)
-	•	Postman (Testes de endpoints)
+- Node.js
+- Express
+- MongoDB e Mongoose
+- Postman (testes manuais dos endpoints)
 
-⸻
+## Estrutura
 
-Arquitetura do projeto
+Organização em camadas, no padrão MVC (sem views):
 
-O projeto segue uma estrutura organizada baseada no padrão MVC:
-
+```
 src
- ├── controllers
- ├── routes
- ├── models
- ├── middleware
- ├── database
- └── app.js
+ ├── controllers   regras de cada endpoint e respostas HTTP
+ ├── routes        definição das rotas
+ ├── models        schemas Mongoose (Order e itens)
+ ├── database      conexão com o MongoDB
+ └── app.js        configuração do Express
+server.js          inicialização do servidor
+```
 
+## Funcionalidades
 
-⸻
+- Criar pedido, com validação dos campos e resposta `409` para pedido duplicado
+- Buscar pedido por ID
+- Listar todos os pedidos
+- Atualizar pedido
+- Remover pedido
 
-Funcionalidades
-	•	Criar pedidos
-	•	Buscar pedido por ID
-	•	Listar todos os pedidos
-	•	Atualizar pedido
-	•	Deletar pedido
-	•	Autenticação com JWT
-	•	Documentação da API com Swagger
+## Endpoints
 
-⸻
+| Método | Rota | Descrição |
+|---|---|---|
+| POST | `/order` | Cria um pedido |
+| GET | `/order/list` | Lista os pedidos |
+| GET | `/order/:id` | Busca um pedido pelo ID |
+| PUT | `/order/:id` | Atualiza um pedido |
+| DELETE | `/order/:id` | Remove um pedido |
 
-Endpoints da API
+### Exemplo de requisição (POST `/order`)
 
-Autenticação
-
-Login
-
-POST /auth/login
-
-Exemplo de requisição:
-
-{
-  "username": "admin",
-  "password": "123456"
-}
-
-Retorna um token JWT para acesso às rotas protegidas.
-
-⸻
-
-Pedidos
-
-Criar pedido
-
-POST /order
-
-Listar pedidos
-
-GET /order/list
-
-Buscar pedido por ID
-
-GET /order/:id
-
-Atualizar pedido
-
-PUT /order/:id
-
-Deletar pedido
-
-DELETE /order/:id
-
-
-⸻
-
-Exemplo de requisição
-
+```json
 {
   "numeroPedido": "v10089015vdb-01",
   "valorTotal": 10000,
@@ -100,47 +57,28 @@ Exemplo de requisição
     }
   ]
 }
+```
 
+## Como executar
 
-⸻
+Pré-requisitos: Node.js e um MongoDB rodando em `mongodb://127.0.0.1:27017` (o banco usado é `orderdb`).
 
-Documentação da API
-
-Após iniciar o servidor, a documentação interativa estará disponível em:
-
-http://localhost:3000/api-docs
-
-Através do Swagger é possível visualizar e testar todos os endpoints da API.
-
-⸻
-
-Como executar o projeto
-
-1. Clonar o repositório
-
+```bash
 git clone https://github.com/7Genesis/order-api.git
-
-2. Acessar a pasta do projeto
-
 cd order-api
-
-3. Instalar as dependências
-
 npm install
-
-4. Executar o servidor
-
 npm start
+```
 
-O servidor será iniciado em:
+O servidor sobe em `http://localhost:3000`.
 
-http://localhost:3000
+## Limitações conhecidas
 
+- Não há autenticação: todas as rotas são abertas.
+- Não há documentação Swagger/OpenAPI; os endpoints estão descritos acima.
+- A porta e a URL do MongoDB estão fixas no código (`server.js` e `src/database/connection.js`), sem variáveis de ambiente.
+- Não há testes automatizados.
 
-⸻
-
-Autor
+## Autor
 
 Genesis Melo
-Desenvolvedor Backend
-:::
